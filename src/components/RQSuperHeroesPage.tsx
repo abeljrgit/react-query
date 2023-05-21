@@ -27,6 +27,11 @@ export const RQSuperHeroesPage = () => {
       refetchIntervalInBackground: false,
       onSuccess,
       onError,
+      select: (data) => {
+        const superHeroNames = data.data.map((hero: any) => hero.alterEgo);
+
+        return superHeroNames;
+      },
     }
   );
 
@@ -58,8 +63,11 @@ export const RQSuperHeroesPage = () => {
       </button>
       {loadingFunc()}
       {errorFunc()}
-      {data?.data.map((hero: any) => {
+      {/* {data?.data.map((hero: any) => {
         return <div key={hero.name}>{hero.name}</div>;
+      })} */}
+      {data?.map((alterEgo: any) => {
+        return <div key={alterEgo}>{alterEgo}</div>;
       })}
     </>
   );
