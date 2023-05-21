@@ -6,10 +6,11 @@ const fetchSuperHeroes = () => {
 };
 
 export const RQSuperHeroesPage = () => {
-  const { isLoading, data, isError, error, isFetching } = useQuery(
+  const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
     ['super-heroes'],
     fetchSuperHeroes,
     {
+      enabled: false,
       cacheTime: 2000,
       staleTime: 5000,
       refetchOnMount: false,
@@ -20,21 +21,33 @@ export const RQSuperHeroesPage = () => {
   );
 
   console.log({ isLoading, isFetching });
-
-  if (isLoading) {
-    return <h2>Loading...</h2>;
-  }
-  if (isError) {
-    if (error instanceof Error) {
-      return <h2>{error.message}</h2>;
-    } else {
-      return <h2>ERROR</h2>;
+  function loadingFunc() {
+    if (isLoading) {
+      return <h2>Loading...</h2>;
     }
   }
 
+  function errorFunc() {
+    if (isError) {
+      if (error instanceof Error) {
+        return <h2>{error.message}</h2>;
+      } else {
+        return <h2>ERROR</h2>;
+      }
+    }
+  }
   return (
     <>
       <h2>RQSuperHeroesPage</h2>
+      <button
+        onClick={() => {
+          refetch();
+        }}
+      >
+        Fetch Heroes
+      </button>
+      {loadingFunc()}
+      {errorFunc()}
       {data?.data.map((hero: any) => {
         return <div key={hero.name}>{hero.name}</div>;
       })}
