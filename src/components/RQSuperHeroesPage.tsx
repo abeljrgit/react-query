@@ -12,6 +12,8 @@ export const RQSuperHeroesPage = () => {
     {
       cacheTime: 2000,
       staleTime: 5000,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
     }
   );
 
