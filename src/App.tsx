@@ -5,6 +5,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { SuperHeroesPage } from './components/SuperHeroesPage';
 import { RQSuperHeroesPage } from './components/RQSuperHeroesPage';
 import { HomePage } from './components/HomePage';
+import { RQSuperHeroPage } from './components/RQSuperHeroPage';
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           </ul>
         </nav>
         <Routes>
+          <Route
+            path="/rq-super-heroes/:heroId"
+            element={<RQSuperHeroPage />}
+          />
           <Route path="/super-heroes" element={<SuperHeroesPage />} />
           <Route path="/rq-super-heroes" element={<RQSuperHeroesPage />} />
           <Route path="/" element={<HomePage />} />

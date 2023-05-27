@@ -1,4 +1,5 @@
 import { useSuperHeroesData } from '../hooks/useSuperHeroesData';
+import { Link } from 'react-router-dom';
 
 export const RQSuperHeroesPage = () => {
   const onSuccess = (data: any) => {
@@ -40,12 +41,16 @@ export const RQSuperHeroesPage = () => {
       </button>
       {loadingFunc()}
       {errorFunc()}
-      {/* {data?.data.map((hero: any) => {
-        return <div key={hero.name}>{hero.name}</div>;
-      })} */}
-      {data?.map((alterEgo: any) => {
-        return <div key={alterEgo}>{alterEgo}</div>;
+      {data?.data.map((hero: any) => {
+        return (
+          <div key={hero.id}>
+            <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
+          </div>
+        );
       })}
+      {/* {data?.map((alterEgo: any) => {
+        return <div key={alterEgo}>{alterEgo}</div>;
+      })} */}
     </>
   );
 };

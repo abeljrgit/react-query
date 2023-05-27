@@ -19,10 +19,10 @@ export const useSuperHeroesData = (
     refetchIntervalInBackground: false,
     onSuccess,
     onError,
-    select: (data) => {
-      const superHeroNames = data.data.map((hero: any) => hero.alterEgo);
+    // select: (data) => {
+    //   const superHeroNames = data.data.map((hero: any) => hero.alterEgo);
 
-      return superHeroNames;
-    },
+    //   return superHeroNames;
+    // },
   });
 };
