@@ -10,6 +10,7 @@ import { ParallelQueriesPage } from './components/ParallelQueriesPage';
 import { DynamicParallelQueriesPage } from './components/DynamicParallelQueriesPage';
 import { DependentQueriesPage } from './components/DependentQueriesPage';
 import { PaginatedQueriesPage } from './components/PaginatedQueriesPage';
+import { InfiniteQueriesPage } from './components/InfiniteQueriesPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           </ul>
         </nav>
         <Routes>
+          <Route path="/rq-infinite" element={<InfiniteQueriesPage />} />
           <Route path="/rq-paginated" element={<PaginatedQueriesPage />} />
           <Route
             path="/rq-dependent"
